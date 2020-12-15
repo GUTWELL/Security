@@ -1,0 +1,55 @@
+DELAY 1000
+GUI r
+DELAY 200
+STRING notepad
+ENTER
+DELAY 500
+STRING This computer has been hijacked...
+ENTER
+ENTER
+DELAY 2000
+STRING In a few moments your screen will do some strange things
+ENTER
+ENTER
+DELAY 3000
+STRING Start by opening a command prompt. If you can't fix it in two minutes it will fix its self
+ENTER
+ENTER
+DELAY 3000
+STRING You will need TASK MANAGER in order to EXPLORE what went wrong
+ENTER
+ENTER
+DELAY 3000
+STRING You might need to RUN A NEW TASK in order to FILE neatly again
+ENTER
+ENTER
+DELAY 3500
+STRING The answer might be just a couple PgDn's away feel free to EXPLORE that
+ENTER
+ENTER
+DELAY 3000
+STRING Good Luck
+ENTER
+DELAY 5000
+GUI r 
+DELAY 200
+STRING cmd
+DELAY 300
+CTRL SHIFT ENTER
+DELAY 1000
+ALT y
+DELAY 500
+STRING color a
+ENTER
+DELAY 100
+STRING cls
+ENTER
+DELAY 100
+STRING taskkill /f /im explorer.exe
+ENTER
+DELAY 300
+STRING taskkill /f /im notepad.exe
+ENTER
+DELAY 200
+STRING exit
+ENTER

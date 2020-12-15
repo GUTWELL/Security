@@ -1,0 +1,3 @@
+apt-get install nvidia-driver
+apt-get install nvidia-smi
+apt-get install nvidia-opencl-icd

